@@ -12,6 +12,6 @@ if myTask.is_info(param_dict["task"]):
 elif myTask.is_checkout(param_dict["task"]):
     myGit.checkout(param_dict)
 elif myTask.is_test(param_dict["task"]):
-    myTest.test(param_dict)
+    myTest.test()
 elif myTask.is_per_test(param_dict["task"]):
-    myTest.per_test(param_dict)
+    myTest.per_test()

@@ -44,14 +44,21 @@ The framework's command-line interface includes the following commands:
 * test: Runs all tests for a given bug and measures the test coverage.
 * per-test: Runs each test individually and measures the per-test coverage for a given bug.
 
-For the checkout, test, and per-test commands, the user can specify the desired code revision:
+For the checkout command, the user can specify the desired code revision:
 
 * buggy: The parent commit of the revision in which the bug was fixed.
 * fixed-only-test-change: A revision containing only the tests introduced in the bug fixing commit, applied to the buggy revision.
 * fixed: A revision containing both the cleaned fix and the newly added tests.
 
-Example command:
+Example of the checkout command:
 
 ```
-python3 main.py -p Bower -b 1 -t checkout -v fixed -o output/
+python3 main.py -p Bower -b 1 -t checkout -v fixed -o Bower-1f/
+```
+
+Example of the test command:
+
+```
+cd Bower-1f/bower/
+python3 ../../main.py -t test
 ```
