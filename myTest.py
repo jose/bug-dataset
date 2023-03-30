@@ -119,8 +119,20 @@ def read_config():
 
 # ======================= tests =============
 
-def test():
-    param_dict = read_config()
+def get_test_command(param_dict):
+    if param_dict['ext_test_suite'] != '':
+        if os.path.isdir(param_dict["ext_test_suite"]) == False:
+            raise Exception(param_dict["ext_test_suite"] + " is not a directory!")
+
+        sp.call("rm -rf ext-test-suites; mkdir ext-test-suites", shell=True)
+        sp.call("cp -Rv " + param_dict['ext_test_suite'] + "/ ext-test-suites/", shell=True)
+        return("node_modules/.bin/_mocha -R json -t 10000 -c ext-test-suites/**/*.js")
+    else:
+        return(get_command(param_dict, "Test command"))
+
+def test(param_dict):
+    project_param_dict = read_config()
+    param_dict.update(project_param_dict)
     sp.call("rm -rf test_results.json test_results.json.zip", shell=True)
 
     set_node_version(get_command(param_dict, "Node version"))
@@ -129,15 +141,16 @@ def test():
        run_pre_and_post_command(get_command(param_dict, "Pre-command"))
     run_npm_install()
     run_pre_and_post_command(get_command(param_dict, "Pre-command"))
-    run_test_command(get_command(param_dict, "Test command"))
+    run_test_command(get_test_command(param_dict))
     get_test_stat()
     zip_test_results()
 
     run_pre_and_post_command(get_command(param_dict, "Post-command"))
 
 
-def per_test():
-    param_dict = read_config()
+def per_test(param_dict):
+    project_param_dict = read_config()
+    param_dict.update(project_param_dict)
     sp.call("rm -rf test_results.json test_results.json.zip", shell=True)
 
     set_node_version(get_command(param_dict, "Node version"))
@@ -145,7 +158,7 @@ def per_test():
     run_npm_install()
     run_pre_and_post_command(get_command(param_dict, "Pre-command"))
 
-    run_test_command(get_command(param_dict, "Test command"))
+    run_test_command(get_test_command(param_dict))
     get_test_stat()
     zip_test_results()
 

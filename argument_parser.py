@@ -10,6 +10,7 @@ def arg_parser():
     parser.add_argument('-p', '--project',  required = False, choices= get_projects(), help = '')
     parser.add_argument('-b', '--bug-ID',   required = False, help = '')
     parser.add_argument('-t', '--task',     required = True, choices = ['info', 'checkout', 'test', 'per-test', 'coverage', 'coverage-per-test'], help='')
+    parser.add_argument('-s', '--ext-test-suite',required = False, help='Path to the folder that contains external test suites, e.g., randomly generated')
     parser.add_argument('-v', '--version',  required = False, choices = ['buggy', 'fixed', 'fixed-only-test-change'], help='')
     parser.add_argument('-o', '--output',   required = False, help='output (clone, checkout etc) folder')
 
@@ -33,6 +34,8 @@ def arg_parser():
         param_dict["bug-ID"] = args.bug_ID
         param_dict["version"] = args.version
         param_dict["output"] = args.output
+    if param_dict["task"] == 'test' or param_dict["task"] == 'per-test' or param_dict["task"] == 'coverage' or param_dict["task"] == 'coverage-per-test':
+        param_dict["ext_test_suite"] = '' if args.ext_test_suite is None else args.ext_test_suite
     return param_dict
 
 

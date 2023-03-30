@@ -41,7 +41,7 @@ The framework's command-line interface includes the following commands:
 
 * info: Prints out information about a given bug.
 * checkout: Checks-out the source code for a given bug.
-* test: Runs all tests for a given bug.
+* test: Runs, by default, all tests for a given bug.  Use `--ext-test-suite <path to external test suite>` to run all external test suites (e.g., randomly-generated) in the specified path.
 * per-test: Runs each test individually for a given bug.
 * coverage: Runs all tests for a given bug and measures the test coverage.
 * coverage-per-test: Runs each test individually and measures the per-test coverage for a given bug.

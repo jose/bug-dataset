@@ -13,10 +13,10 @@ if myTask.is_info(param_dict["task"]):
 elif myTask.is_checkout(param_dict["task"]):
     myGit.checkout(param_dict)
 elif myTask.is_test(param_dict["task"]):
-    myTest.test()
+    myTest.test(param_dict)
 elif myTask.is_per_test(param_dict["task"]):
-    myTest.per_test()
+    myTest.per_test(param_dict)
 elif myTask.is_coverage(param_dict["task"]):
-    myCoverage.coverage()
+    myCoverage.coverage(param_dict)
 elif myTask.is_coverage_per_test(param_dict["task"]):
-    myCoverage.coverage_per_test()
+    myCoverage.coverage_per_test(param_dict)

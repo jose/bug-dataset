@@ -44,8 +44,9 @@ def get_cov_stat():
 
 # ======================= tests + coverage =============
 
-def coverage():
-    param_dict = read_config()
+def coverage(param_dict):
+    project_param_dict = read_config()
+    param_dict.update(project_param_dict)
     sp.call("rm -rf coverage/", shell=True)
 
     set_node_version(get_command(param_dict, "Node version"))
@@ -54,7 +55,7 @@ def coverage():
        run_pre_and_post_command(get_command(param_dict, "Pre-command"))
     run_npm_install()
     run_pre_and_post_command(get_command(param_dict, "Pre-command"))
-    run_test_command(get_command(param_dict, "Test command"))
+    run_test_command(get_test_command(param_dict))
     get_test_stat()
     zip_test_results()
 
@@ -63,8 +64,9 @@ def coverage():
     run_pre_and_post_command(get_command(param_dict, "Post-command"))
 
 
-def coverage_per_test():
-    param_dict = read_config()
+def coverage_per_test(param_dict):
+    project_param_dict = read_config()
+    param_dict.update(project_param_dict)
     sp.call("rm -rf coverage/", shell=True)
 
     set_node_version(get_command(param_dict, "Node version"))
@@ -72,7 +74,7 @@ def coverage_per_test():
     run_npm_install()
     run_pre_and_post_command(get_command(param_dict, "Pre-command"))
 
-    run_test_command(get_command(param_dict, "Test command"))
+    run_test_command(get_test_command(param_dict))
     get_test_stat()
     zip_test_results()
 
