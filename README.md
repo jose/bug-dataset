@@ -41,8 +41,10 @@ The framework's command-line interface includes the following commands:
 
 * info: Prints out information about a given bug.
 * checkout: Checks-out the source code for a given bug.
-* test: Runs all tests for a given bug and measures the test coverage.
-* per-test: Runs each test individually and measures the per-test coverage for a given bug.
+* test: Runs all tests for a given bug.
+* per-test: Runs each test individually for a given bug.
+* coverage: Runs all tests for a given bug and measures the test coverage.
+* coverage-per-test: Runs each test individually and measures the per-test coverage for a given bug.
 
 For the checkout command, the user can specify the desired code revision:
 

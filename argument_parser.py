@@ -9,7 +9,7 @@ def arg_parser():
     parser = argparse.ArgumentParser(description = '   ')
     parser.add_argument('-p', '--project',  required = False, choices= get_projects(), help = '')
     parser.add_argument('-b', '--bug-ID',   required = False, help = '')
-    parser.add_argument('-t', '--task',     required = True, choices = ['info', 'checkout', 'test', 'per-test'], help='')
+    parser.add_argument('-t', '--task',     required = True, choices = ['info', 'checkout', 'test', 'per-test', 'coverage', 'coverage-per-test'], help='')
     parser.add_argument('-v', '--version',  required = False, choices = ['buggy', 'fixed', 'fixed-only-test-change'], help='')
     parser.add_argument('-o', '--output',   required = False, help='output (clone, checkout etc) folder')
 

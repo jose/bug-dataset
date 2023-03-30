@@ -3,6 +3,7 @@ import myGit
 import myInfo
 import myTask
 import myTest
+import myCoverage
 
 param_dict = argument_parser.arg_parser()
 
@@ -15,3 +16,7 @@ elif myTask.is_test(param_dict["task"]):
     myTest.test()
 elif myTask.is_per_test(param_dict["task"]):
     myTest.per_test()
+elif myTask.is_coverage(param_dict["task"]):
+    myCoverage.coverage()
+elif myTask.is_coverage_per_test(param_dict["task"]):
+    myCoverage.coverage_per_test()
